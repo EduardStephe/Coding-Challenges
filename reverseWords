@@ -1,0 +1,56 @@
+class Solution {
+    public String reverseWords(String s) {
+        int pos = 0;                    // Pointer to traverse the string.
+        int left = 0, right;            // Pointers needed to reverse a word in the string. Initially, left value is same as pos.
+        String modString = "";          // Modified String.
+        
+        while(pos < s.length()){        // Traverse through the string.
+            if(s.charAt(pos) == ' '){   // If a whitespace, consider it one word
+                char[] word = s.substring(left, pos).toCharArray(); // Word array to be reversed.
+                
+                // Reuse left and right pointers to reverse the word.
+                left = 0; right = word.length-1;
+                // Reverse the word using two pointers.
+                while(left < right){            // Repeat until the pointers meet.
+                    
+                    char temp = word[left];         // Store the element where the left pointer is located.
+                    
+                    // Set the left pointed element for the right pointed element. Increment left after.
+                    word[left++] = word[right];
+                    
+                    // Set the right pointed element to the original left pointed element. Decrement right after.
+                    word[right--] = temp;
+                    
+                } // While.
+                
+                modString += String.copyValueOf(word) + " "; // Add to modified String.
+                left = pos+1;                             // New left pointer will start at the element after the space.
+            }// if.
+            
+            if(pos == s.length()-1){
+                char[] word = s.substring(left, pos+1).toCharArray(); // Word array to be reversed.
+                
+                // Reuse left and right pointers to reverse the word.
+                left = 0; right = word.length-1;
+                // Reverse the word using two pointers.
+                while(left < right){            // Repeat until the pointers meet.
+                    
+                    char temp = word[left];         // Store the element where the left pointer is located.
+                    
+                    // Set the left pointed element for the right pointed element. Increment left after.
+                    word[left++] = word[right];
+                    
+                    // Set the right pointed element to the original left pointed element. Decrement right after.
+                    word[right--] = temp;
+                    
+                } // While.
+                
+                modString += String.copyValueOf(word); // Add to modified String.
+                left = pos+1;                             // New left pointer will start at the element after the space.
+            }// if.
+            pos++;                      // Increment pos for next position.
+        } // while.
+        
+        return modString;
+    } // reverseWords.
+} // Solution.
