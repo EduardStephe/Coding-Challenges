@@ -1,0 +1,44 @@
+class Solution {
+    public boolean detectCapitalUse(String word) {
+        /* Declare and initialize flags.
+        * match1: Are all the letters capital?
+        * match2: Are all the letters lowercase?
+        * match3: Does the word follow a standard format? */
+        boolean match1 = true, match2 = true, match3 = true;
+       
+        // Determine if match1?
+        for(int i = 0; i < word.length(); i++){
+            if(Character.isLowerCase(word.charAt(i))){
+                match1 = false;
+            } // if.
+        } // for.
+       
+        if(match1){
+            return true;
+        } // if.
+       
+        // Determine if match2?
+        for(int i = 0; i < word.length(); i++){
+            if(Character.isUpperCase(word.charAt(i))){
+                match2 = false;
+            } // if.
+        } // for.
+       
+        if(match2){
+            return true;
+        } // if.
+       
+        // Determine if match3?
+        for(int i = 1; i < word.length(); i++){ // i starts at 2nd element assuming 1st element is uppercase.
+            if(Character.isUpperCase(word.charAt(i))){
+                match3 = false;
+            } // if.
+        } // for.
+
+        if(match3){
+            return true;
+        } // if.
+        
+        return false;
+    } // detectCapitalUse.
+} // Solution.
