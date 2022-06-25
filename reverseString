@@ -1,0 +1,13 @@
+class Solution {
+    public void reverseString(char[] s) {
+        char temp;                  // Temporary character.
+        int left = 0;               // Pointer on the left side of the array.
+        int right = s.length-1;     // Pointer on the right side of the array.
+       
+        while(left < right){        // Repeat until the pointers meet.
+            temp = s[left];         // Store the element where the left pointer is located.
+            s[left++] = s[right];   // Set the left pointed element for the right pointed element. Increment left after.
+            s[right--] = temp;      // Set the right pointed element to the original left pointed element. Decrement right after.
+        } // while.
+    } // reverseString.
+} // Solution.
