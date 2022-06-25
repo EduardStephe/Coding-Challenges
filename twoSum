@@ -1,0 +1,30 @@
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        
+        int pos = 0;                // Position pointer to traverse the array.
+        int[] index = new int[2];   // Indices with values that add up to the target.
+        boolean found = false;      // Flag to see if a match to the total is found.
+        
+        // Initialize the first index by using the 1st element of nums.
+        index[0] = pos;
+        
+        while(pos < nums.length && !found){
+            // z - y = x == x + y = z, faster searching that looking for individual pairs. Additional && statement in case the same element adds to itself.
+            if(index[0] != pos && target - nums[pos] == nums[index[0]]){
+                index[1] = pos;
+                found = true;
+            } // if.
+            
+            // If a match is not found, go to the use the next indexed nums element and reset pos.
+            if(pos == nums.length - 1 && !found){
+                index[0]++;
+                pos = 0;
+            } else {
+            // Increment pos.
+            pos++;
+            } // if-else
+        } // while.
+        
+        return index;
+    } // twoSum.
+} // Solution.
