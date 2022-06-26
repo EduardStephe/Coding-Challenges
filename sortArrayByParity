@@ -1,0 +1,17 @@
+class Solution {
+    public int[] sortArrayByParity(int[] nums) {
+        // Variables.
+        int[] parity = new int[nums.length];        // New array to group by parity.
+        int even = 0, odd = nums.length - 1;        // Pointers. Even is on the leftmost side.
+        
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] % 2 == 0){   // Even.
+                parity[even++] = nums[i];       // Leftside element.
+            } else {                // Odd.
+                parity[odd--] = nums[i];        // Rightside element.
+            } //
+        } // for.
+        
+        return parity;
+    } // sortArrayByParity.
+} // Solution.
