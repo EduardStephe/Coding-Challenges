@@ -1,0 +1,28 @@
+/** Brute force method. Execution time is inefficient since it requires finding each character in each string then validates by checking if each character is deleted. */
+
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        // If string sizes don't match, not an anagram.
+        if(s.length() != t.length()) return false;
+        
+        // Convert s to a char array.
+        char[] anagram = s.toCharArray();
+        
+        for(int i = 0; i < t.length(); i++){            // Navigate through t.
+            for(int j = 0; j < anagram.length; j++){    // Check for any corresponding characters.
+                if(t.charAt(i) == anagram[j]){
+                    anagram[j] = ' '; // Delete char from set.
+                    j = anagram.length; // break from loop.
+                } // If.
+            } // for.
+        } // for.
+        
+        for(int i = 0; i < anagram.length; i++){
+            if(anagram[i] != ' '){      // If the anagram array set has any characters left, not an anagram.
+                return false;
+            } // if.
+        } // for.
+        
+        return true;
+    } // isAnagram.
+} // Solution.
