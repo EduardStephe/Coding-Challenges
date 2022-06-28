@@ -26,3 +26,17 @@ class Solution {
         return true;
     } // isAnagram.
 } // Solution.
+
+/** Efficient method using fewer nested loops and using the bucket method. */
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        // Use an array like a bucket.
+        int[] letter = new int[26];
+        for(int i = 0; i < s.length(); i++) letter[s.charAt(i) - 97]++;                         // 97 offset for lowercase letters. Increment bucket.
+        for(int j = 0; j < t.length(); j++) if(--letter[t.charAt(j) - 97] < 0) return false;    // 97 offset, decrement bucket.
+        for(int number: letter){                                                                // return false if there are left over letters.
+            if(number > 0) return false;
+        } // for.
+        return true;
+    } // isAnagram.
+} // Solution.
